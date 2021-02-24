@@ -1,0 +1,37 @@
+.link a,
+.link a:visited,
+.link a:active {
+  text-decoration: none;
+  font-size: 30px;
+  color: black;
+}
+.link {
+  margin-bottom: 40px;
+}
+.one a {
+  background-color: teal;
+  color: white !important;
+  padding: 10px 30px;
+  border: 3px solid teal;
+  transition: 0.3s all ease-in-out;
+}
+.one a:hover {
+  background-color: white;
+  color: teal !important;
+  padding: 10px 30px;
+  border: 3px solid teal;
+}
+.two a:hover {
+  background-color: teal;
+  color: white !important;
+  padding: 10px 30px;
+  border: 3px solid teal;
+}
+.two a {
+  background-color: white;
+  color: teal !important;
+  padding: 10px 30px;
+  border: 3px solid teal;
+  transition: 0.3s all ease-in-out;
+
+}

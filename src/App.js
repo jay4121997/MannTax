@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Layout from "./hoc/layout/layout";
+import Home from "./containers/home/Home";
+import AboutUs from "./containers/AboutUs/AboutUs";
+import Services from "./containers/Services/Services";
+import Checklist from "./containers/Checklist/Checklist";
+import ContactUs from "./containers/ContactUs/ContactUs";
+import KnowMore from "./containers/KnowMore/KnowMore";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout>
+        <Switch>
+          <Route path="/" exact render={(props) => <Home />}></Route>
+          <Route path="/about" exact render={(props) => <AboutUs />}></Route>
+          <Route
+            path="/services"
+            exact
+            render={(props) => <Services />}
+          ></Route>
+          <Route
+            path="/document-checklist"
+            exact
+            render={(props) => <Checklist />}
+          ></Route>
+          <Route
+            path="/contact-us"
+            exact
+            render={(props) => <ContactUs />}
+          ></Route>
+          <Route
+            path="/know-more"
+            exact
+            render={(props) => <KnowMore />}
+          ></Route>
+          <Redirect to="/" />
+        </Switch>
+      </Layout>
     </div>
   );
 }
