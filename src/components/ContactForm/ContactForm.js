@@ -1,15 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import SectionTitle from '../../components/UI/SectionTitle/SectionTitle'
 import classes from './ContactForm.module.css'
+import axios from 'axios'
+
+const baseURL=process.env.REACT_APP_MY_URL
 
 const ContactForm = (props) => {
-    const [name, setName] = useState("");
+  const [dbEmail, setDbEmail]=useState("")
+  const [dbAddress, setDbAddress]=useState("")
+  const [dbMapUrl, setDbMapUrl]=useState("")
+  const [dbPhone, setDbPhone]=useState("")
+  const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState(number);
   const [encmessage, setEncMessage] = useState("");
   const [link, setLink] = useState("#");
+
+  useEffect(() => {
+    try {
+      axios.get(`${baseURL}/contact.json`).then(
+        (res) => {
+          const data =res.data
+          setDbAddress(data.address)
+          setDbEmail(data.email)
+          setDbMapUrl(data.mapurl)
+          setDbPhone(data.number)
+        }
+      )
+      .catch(e=>console.log(e))
+    } catch (error) {
+      console.error(error)
+    }
+  },[])
+
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
     document.location.href = link;
@@ -19,11 +45,9 @@ const ContactForm = (props) => {
     setMessage(event.target.value);
     let msg = message;
     let encsmg = encodeURI(msg);
-    console.log("Msg", message);
-    console.log("EncMsg", encsmg);
     setEncMessage(encsmg);
     setLink(
-      `mailto:dinakesaria@gmail.com?subject=${subject}&body=Name%3A%20${name}%0AContact%20No%3A%20${number}%0A%0A ${encodeURI(
+      `mailto:${dbEmail}?subject=${subject}&body=Name%3A%20${name}%0AContact%20No%3A%20${number}%0A%0A ${encodeURI(
         event.target.value
       )}`
     );
@@ -45,7 +69,7 @@ const ContactForm = (props) => {
               <div>
                 <iframe
                   title="Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.308621601586!2d-79.26054638462888!3d43.78720867911686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d10fae38eb8b%3A0x2d6d204e1437c3d1!2s360%20Pitfield%20Rd%2C%20Scarborough%2C%20ON!5e0!3m2!1sen!2sca!4v1612931197404!5m2!1sen!2sca"
+                  src={dbMapUrl}
                   frameBorder="0"
                   style={{ border: "0" }}
                   allowFullScreen
@@ -63,14 +87,14 @@ const ContactForm = (props) => {
             >
               <div className={classes.sec2innercont}>
                 <div className={classes.sec2addr}>
-                  <p>1611/360 Pitfield Road, Scaborough, ON M1S 3E6</p>
+                  <p>{dbAddress}</p>
                   <p>
                     <span className={classes.collig}>Phone :</span>{" "}
-                    +1(647)-774-2131
+                    {dbPhone}
                   </p>
                   <p>
                     <span className={classes.collig}>E-mail :</span>{" "}
-                    dinakesaria@gmail.com
+                    {dbEmail}
                   </p>
                 </div>
               </div>

@@ -1,11 +1,37 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "./Footer.css";
 import Logo from "../../components/Logo/Logo";
 import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import axios from "axios";
+const baseURL=process.env.REACT_APP_MY_URL
+
 
 const Footer = (props) => {
+  const [dbEmail, setDbEmail]=useState("")
+  const [dbAddress, setDbAddress]=useState("")
+  const [dbMapUrl, setDbMapUrl]=useState("")
+  const [dbPhone, setDbPhone] = useState("")
+  
+  useEffect(() => {
+    try {
+      axios.get(`${baseURL}/contact.json`).then(
+        (res) => {
+          const data =res.data
+          setDbAddress(data.address)
+          setDbEmail(data.email)
+          setDbMapUrl(data.mapurl)
+          setDbPhone(data.number)
+        }
+      )
+      .catch(e=>console.log(e))
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
+  
   let year = new Date();
+
 
   return (
     <div className="body" data-aos='fade-up'>
@@ -26,16 +52,16 @@ const Footer = (props) => {
                   href="https://www.google.com/maps?ll=43.788064,-79.258725&z=17&t=m&hl=en&gl=CA&mapclient=embed&q=360+Pitfield+Rd+Scarborough,+ON+M1S+2V9"
                   target="blank"
                 >
-                  360 Pitfield Road, Scaborough, ON M1S 3E6
+                  {dbAddress}
                 </a>
               </li>
 
               <li>
-                <a href="tel:+16477742131">+1(647)-774-2131</a>
+                <a href={`tel:${dbPhone}`}>{dbPhone}</a>
               </li>
 
               <li>
-                <Link to="contact-us">dinakesaria@gmail.com</Link>
+                <Link to="contact-us">{dbEmail}</Link>
               </li>
             </ul>
           </li>
@@ -67,14 +93,14 @@ const Footer = (props) => {
 
             <ul className="nav__ul">
               <li>
-                <a href="tel:+16477742131" className="icon FaPhoneAlt">
+                <a href={`tel:${dbPhone}`} className="icon FaPhoneAlt">
                   <FaPhoneAlt />
                 </a>
               </li>
 
               <li>
                 <a
-                  href="https://api.whatsapp.com/send?phone=16477742131"
+                  href={`https://api.whatsapp.com/send?phone=${dbPhone}`}
                   target="blank"
                   className="icon FaWhatsapp"
                 >
