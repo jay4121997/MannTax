@@ -63,7 +63,7 @@ const ContactForm = (props) => {
             >
               <div className={classes.sec2innercont}>
                 <div className={classes.sec2addr}>
-                  <p>360 Pitfield Road, Scaborough, ON M1S 3E6</p>
+                  <p>1611/360 Pitfield Road, Scaborough, ON M1S 3E6</p>
                   <p>
                     <span className={classes.collig}>Phone :</span>{" "}
                     +1(647)-774-2131
