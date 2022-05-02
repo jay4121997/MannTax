@@ -7,6 +7,7 @@ import Services from "./containers/Services/Services";
 import Checklist from "./containers/Checklist/Checklist";
 import ContactUs from "./containers/ContactUs/ContactUs";
 import KnowMore from "./containers/KnowMore/KnowMore";
+import News from "./containers/News/News";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
             path="/know-more"
             exact
             render={(props) => <KnowMore />}
+          ></Route>
+          <Route
+            path="/news"
+            exact
+            render={(props) => <News />}
           ></Route>
           <Redirect to="/" />
         </Switch>
