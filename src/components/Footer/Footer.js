@@ -34,7 +34,7 @@ const Footer = (props) => {
 
 
   return (
-    <div className="body" data-aos='fade-up'>
+    <div className="body" >
       <footer className="footer">
         <div className="footer__addr">
           <div className="footer__logo">

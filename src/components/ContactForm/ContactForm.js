@@ -22,6 +22,7 @@ const ContactForm = (props) => {
     try {
       axios.get(`${baseURL}/contact.json`).then(
         (res) => {
+          console.log('Receiving');
           const data =res.data
           setDbAddress(data.address)
           setDbEmail(data.email)

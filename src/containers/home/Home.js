@@ -7,12 +7,14 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 
 const Home = (props) => {
   useEffect(() => {
-    window.scroll(0, 0);
-    document.title="Home | MANN TAX AND ACCOUNTING "
+    document.title = "Home | MANN TAX AND ACCOUNTING ";
+    setTimeout(() => {
+      window.scroll(0, 0);
+    }, 100);
   }, []);
   return (
     <React.Fragment>
-      <div className={classes.image_container} data-aos="fade-up">
+      <div className={classes.image_container} data-aos="zoom-in-down">
         <div className={classes.text}>MANN TAX AND ACCOUNTING</div>
       </div>
 

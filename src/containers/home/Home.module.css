@@ -5,7 +5,7 @@
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Some height */
+  height: 100vh; 
 }
 
 .text {
@@ -30,12 +30,32 @@
   
 }
 
+
+
+@media(max-width:1200px){
+  .text{
+     font-size: 60px; 
+     max-width: 100%;
+     width: 70%;
+     border-radius: 0%;
+     overflow: hidden;
+  }
+}
 @media(max-width:800px){
-    .text{
-       font-size: 40px; 
-       max-width: 100%;
-       width: 90%;
-       border-radius: 0%;
-       overflow: hidden;
-    }
+  .text{
+     font-size: 40px; 
+     max-width: 100%;
+     width: 90%;
+     border-radius: 0%;
+     overflow: hidden;
+  }
+}
+@media(max-width:668px){
+  .text{
+     font-size: 30px; 
+     max-width: 100%;
+     width: 90%;
+     border-radius: 0%;
+     overflow: hidden;
+  }
 }
