@@ -1,7 +1,7 @@
 .cards {
   display: flex;
   flex-flow: column;
-  padding: 40px;
+  padding: 40px 20px;
   margin-top: 2rem;
   width: 100%;
   /* border: 2px solid red; */

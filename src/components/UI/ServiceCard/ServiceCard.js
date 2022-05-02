@@ -1,14 +1,7 @@
 import React from "react";
 import classes from "./ServiceCard.module.css";
-import {
-  FaUserFriends,
-  FaCity,
-  FaHandHoldingUsd,
-  FaRoute,
-  FaSearchDollar,
-} from "react-icons/fa";
 import * as Icn from 'react-icons/fa';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+
 
 
 // FaUserFriends
