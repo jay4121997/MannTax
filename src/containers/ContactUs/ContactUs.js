@@ -8,18 +8,7 @@ const ContactUs = (props) => {
     document.title = "Contact Us | MANN TAX AND ACCOUNTING ";
   }, []);
 
-  const [name, setName] = useState("");
-  const [subject, setSubject] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [message, setMessage] = useState(number);
-  const [encmessage, setEncMessage] = useState("");
-  const [link, setLink] = useState("#");
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-    document.location.href = link;
-  };
-
+  
   return (
     <div>
       <section data-aos='fade-up'>

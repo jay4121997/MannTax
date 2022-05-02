@@ -10,7 +10,7 @@
 
 }
 
-@media (min-width:500px){
+@media (min-width:768px){
     .NavigationItems{
         flex-flow: row;
         line-height: 45px;
